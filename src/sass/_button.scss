@@ -1,0 +1,141 @@
+.btn-container {
+    display: flex;
+    align-self: flex-start;
+}
+
+.main-btn {
+    @include gradient-border(30px);
+    color: inherit;
+    font-size: 1.8rem;
+    font-weight: 600;
+    position: relative;
+    display: flex;
+    align-self: flex-start;
+    align-items: center;
+    overflow: hidden;
+    z-index: 100;
+    transition: color .3s ease-out;
+
+    &:focus {
+        color: var(--color-primary);
+
+        &::before {
+            @include gradient-bg;
+            width: 100%;
+            height: 100%;
+            transform: translateX(0);
+        }
+    }
+
+    &:active {
+        transform: translateY(3px);
+    }
+
+    .btn-text {
+        padding: 0 2.5rem;
+    }
+
+    .btn-icon {
+        background: var(--color-terturary);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        padding: 1rem;
+    }
+
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateX(100%);
+        transition: all .4s cubic-bezier(.39, 0, .15, 1);
+        z-index: -1;
+    }
+
+    &:hover {
+        color: var(--color-primary);
+
+        .btn-icon {
+            background: transparent;
+        }
+
+        &::before {
+            @include gradient-bg;
+            width: 100%;
+            height: 100%;
+            transform: translateX(0);
+        }
+    }
+}
+
+.submit-btn {
+
+    &__main {
+        width: 50%;
+        transition: all .1s ease-in-out;
+        @include gradient-border(30px);
+        font-size: 2rem;
+        font-weight: 600;
+        width: 100%;
+        position: relative;
+        overflow: hidden;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all .2s ease-in-out;
+        z-index: 10;
+        cursor: pointer;
+
+        &:active {
+            transform: translateY(3px);
+        }
+
+        &:focus {
+            .submit-btn__text {
+                color: var(--color-primary);
+            }
+            
+            &::before {
+                transform: translateX(0);
+            }
+        }
+
+        &:hover {
+            .submit-btn__text {
+                color: var(--color-primary);
+            }
+
+            &::before {
+                transform: translateX(0);
+            }
+        }
+
+        &::before {
+            content: '';
+            position: absolute;
+            @include gradient-bg;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            border-radius: 30px;
+            transform: translateX(102%);
+            transition: all .2s ease-in-out;
+            z-index: -10;
+        }
+    }
+
+    &__text {
+        color: var(--color-white);
+        padding: .8rem;
+        transition: all .2s cubic-bezier(.39, 0, .15, 1);
+    }
+
+    @include respond(phone) {
+        width: 100%;
+    }
+}

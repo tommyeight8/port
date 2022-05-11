@@ -1,0 +1,90 @@
+@mixin clearfix {
+    &::after {
+        content: '';
+        display: table;
+        clear: both;
+    }
+}
+
+@mixin translateCenter {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@mixin grandient-text {
+    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@mixin grandient-text-2 {
+    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%);
+    -webkit-background-clip: text;
+    color: transparent;
+}
+
+@mixin gradient-bg {
+    background-image: linear-gradient(to left, #2af598 0%, #009efd 100%) !important;
+}
+
+@mixin gradient-border($border) {
+    border: double 1px transparent;
+    border-radius: $border;
+    background-image: linear-gradient(var(--color-primary), var(--color-primary)),
+         linear-gradient(to left, #2af598 0%, #009efd 100%);
+    background-origin: border-box;
+    background-clip: content-box,
+    border-box;
+}
+
+@mixin progress-width($width) {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: $width;
+    border-radius: 5px;
+    @include gradient-bg;
+}
+
+@mixin respond($breakpoint) {
+    @if $breakpoint==phone {
+
+        // width less than or equal to 600
+        @media (max-width: 37.5em) {
+            @content
+        }
+
+        ; //600 / 16
+    }
+
+    @if $breakpoint==tab-port {
+
+        // width less than or equal to 900
+        @media (max-width: 56.25em) {
+            @content
+        }
+
+        ; //900 / 16
+    }
+
+    @if $breakpoint==tab-land {
+
+        // width less than or equal to 1200
+        @media (max-width: 75em) {
+            @content
+        }
+
+        ; //1200 / 16
+    }
+
+    @if $breakpoint==big-desktop {
+        @media (min-width: 112.5em) {
+            @content
+        }
+
+        ; //1800 / 16
+    }
+}

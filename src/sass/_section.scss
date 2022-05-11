@@ -1,0 +1,52 @@
+section {
+    min-height: 100vh;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding: 3rem 18rem;
+
+    @include respond(phone) {
+        padding: 1.5rem 5rem;
+    }
+}
+
+.section {
+    transition: all .4 ease-in-out;
+    overflow: hidden;
+}
+
+.sec1 {
+    display: none;
+}
+
+.sec2 {
+    display: none;
+}
+
+.sec3 {
+    display: none;
+}
+
+.sec4 {
+    display: none;
+}
+
+.sec5 {
+    display: none;
+}
+
+.active {
+    display: block;
+    animation: scaleAnimation .8s cubic-bezier(.39, 0, .15, 1);
+
+    @keyframes scaleAnimation {
+        0% {
+            transform: translateY(-100%);
+        }
+
+        100% {
+            transform: translateY(0);
+        }
+    }
+}
